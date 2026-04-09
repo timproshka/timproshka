@@ -1,0 +1,106 @@
+---
+const navLinks = [
+  { href: '#services', label: '\u0423\u0441\u043b\u0443\u0433\u0438' },
+  { href: '#portfolio', label: '\u041f\u043e\u0440\u0442\u0444\u043e\u043b\u0438\u043e' },
+  { href: '#process', label: '\u041f\u0440\u043e\u0446\u0435\u0441\u0441' },
+  { href: '#about', label: '\u041e\u0431\u043e \u043c\u043d\u0435' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-bg/80 border-b border-border/50"
+  style="opacity: 0; transition: opacity 0.3s ease;"
+>
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="text-lg font-black uppercase tracking-wider text-ink">
+      timproshka
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-ink-soft hover:text-ink transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <a
+      href="#contact"
+      class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-bg text-sm font-semibold rounded-full hover:bg-ink/90 transition-colors duration-200"
+    >
+      Обсудить проект
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+
+    <!-- Mobile burger -->
+    <button
+      id="burger-btn"
+      class="md:hidden w-10 h-10 flex items-center justify-center"
+      aria-label="Открыть меню"
+    >
+      <div class="space-y-1.5">
+        <span class="block w-6 h-0.5 bg-ink transition-transform" id="burger-top"></span>
+        <span class="block w-6 h-0.5 bg-ink transition-opacity" id="burger-mid"></span>
+        <span class="block w-4 h-0.5 bg-ink transition-transform" id="burger-bot"></span>
+      </div>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden absolute top-16 left-0 right-0 bg-bg/95 backdrop-blur-lg border-b border-border overflow-hidden"
+    style="max-height: 0; opacity: 0; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;"
+  >
+    <div class="px-6 py-6 space-y-4">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block text-lg font-medium text-ink-soft hover:text-ink transition-colors mobile-nav-link"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-bg text-sm font-semibold rounded-full mt-2"
+      >
+        Обсудить проект
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const burger = document.getElementById('burger-btn');
+  const menu = document.getElementById('mobile-menu');
+  let isOpen = false;
+
+  burger?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (menu) {
+      menu.style.maxHeight = isOpen ? '320px' : '0';
+      menu.style.opacity = isOpen ? '1' : '0';
+    }
+  });
+
+  // Close on link click
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      if (menu) {
+        menu.style.maxHeight = '0';
+        menu.style.opacity = '0';
+      }
+    });
+  });
+</script>

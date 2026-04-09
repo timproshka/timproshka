@@ -1,0 +1,50 @@
+---
+const stack = ['Astro', 'React', 'Tailwind', 'GSAP', 'n8n', 'Python', 'Node.js', 'TypeScript'];
+---
+
+<section id="about" class="section-full">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <!-- Avatar placeholder -->
+      <div class="reveal-scale">
+        <div class="aspect-square rounded-card overflow-hidden">
+          <img
+            src="/photo.jpg"
+            alt="Тимофей — основатель timproshka"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <span class="section-number reveal">Обо мне</span>
+        <h2 class="text-3xl md:text-4xl font-black uppercase mt-3 mb-6 reveal">Тимофей</h2>
+
+        <div class="space-y-4 text-ink-soft leading-relaxed">
+          <p class="reveal">
+            19 лет, Пермь. Занимаюсь веб-разработкой и AI-автоматизацией.
+            Создаю сайты, которые не просто работают, а впечатляют.
+          </p>
+          <p class="reveal">
+            Строю чат-ботов, которые экономят время, и настраиваю AI-сценарии,
+            которые делают рутину за вас.
+          </p>
+        </div>
+
+        <!-- Stack icons -->
+        <div class="mt-8 reveal">
+          <span class="text-xs font-bold uppercase tracking-widest text-ink-soft mb-4 block">Технологии</span>
+          <div class="flex flex-wrap gap-2" data-stagger>
+            {stack.map((name) => (
+              <span class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider border border-border rounded-full text-ink-soft hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
