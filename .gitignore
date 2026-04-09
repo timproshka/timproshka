@@ -3,3 +3,5 @@ dist/
 .astro/
 .claude/
 generate-previews.mjs
+
+.vercel
