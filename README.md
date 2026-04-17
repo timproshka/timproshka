@@ -1,5 +1,9 @@
 # timproshka
 
+[![Deploy status](https://img.shields.io/github/deployments/timproshka/timproshka/Production?label=vercel&logo=vercel&logoColor=white)](https://timproshka.vercel.app)
+[![Astro](https://img.shields.io/badge/Astro-6.1-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 Personal portfolio site for **Timofey Perminov** — Web Developer & AI Automation Engineer.
 
 **Live:** [timproshka.vercel.app](https://timproshka.vercel.app)
