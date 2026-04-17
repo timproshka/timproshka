@@ -4,30 +4,27 @@
 
 @layer base {
   html {
-    scroll-behavior: auto; /* Lenis handles smooth scroll */
+    scroll-behavior: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-bg text-ink font-sans;
-    background: linear-gradient(180deg, #FAFAFA 0%, #F0EDE8 100%);
-    background-attachment: fixed;
     min-height: 100vh;
   }
 
   ::selection {
-    background: #1A1A1A;
-    color: #FAFAFA;
+    background: #7C5CFC;
+    color: #F0F0F5;
   }
 }
 
 /* ================================================
-   ANIMATION SAFETY PATTERN (from stunning-website-builder)
+   ANIMATION SAFETY PATTERN
    CSS default = VISIBLE. Hidden only when JS is ready.
    ================================================ */
 
-/* Elements are visible by default — safe fallback */
 .reveal,
 .reveal-up,
 .reveal-left,
@@ -36,7 +33,6 @@
   transform: none;
 }
 
-/* Hidden only when JS confirms GSAP is initialized */
 .js-ready .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -57,20 +53,17 @@
   transform: scale(0.85);
 }
 
-/* Stagger children — hidden only with JS */
 .js-ready [data-stagger] > * {
   opacity: 0;
   transform: translateY(24px);
 }
 
-/* Split text chars — hidden only with JS */
 .js-ready .split-char {
   opacity: 0;
   transform: translateY(100%);
   display: inline-block;
 }
 
-/* Word reveal with mask */
 .word-mask {
   overflow: hidden;
   display: inline-block;
@@ -82,7 +75,7 @@
 }
 
 /* ================================================
-   ACCESSIBILITY: Respect reduced motion
+   ACCESSIBILITY
    ================================================ */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
@@ -99,75 +92,55 @@
 }
 
 /* ================================================
-   GUARANTEE CARD ANIMATIONS
+   CARD STYLES — DARK THEME
    ================================================ */
 
-.guarantee-card {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.card {
+  @apply bg-surface rounded-card shadow-card transition-all duration-300;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.guarantee-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(26, 26, 26, 0.12);
-}
-
-.guarantee-shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(26, 26, 26, 0.03) 40%,
-    rgba(26, 26, 26, 0.07) 50%,
-    rgba(26, 26, 26, 0.03) 60%,
-    transparent 100%
-  );
-  animation: guarantee-shimmer 4s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes guarantee-shimmer {
-  0% { left: -100%; }
-  50% { left: 150%; }
-  100% { left: 150%; }
-}
-
-.guarantee-icon {
-  animation: guarantee-pulse 3s ease-in-out infinite;
-}
-
-@keyframes guarantee-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 26, 26, 0.2); }
-  50% { box-shadow: 0 0 0 14px rgba(26, 26, 26, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .guarantee-shimmer { animation: none !important; }
-  .guarantee-icon { animation: none !important; }
-  .guarantee-card:hover { transform: none; }
+.card:hover {
+  @apply shadow-card-hover;
+  border-color: rgba(124, 92, 252, 0.2);
+  background: #1A1A2A;
 }
 
 /* ================================================
-   UTILITY CLASSES
+   GLITCH TEXT EFFECT
    ================================================ */
 
-/* Full-screen section */
+.glitch-hover {
+  position: relative;
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s linear;
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 2px); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(2px, -1px); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-1px, 3px); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(3px, -2px); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(-3px, 1px); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+}
+
+/* ================================================
+   SECTION UTILITIES
+   ================================================ */
+
 .section-full {
   @apply min-h-screen flex flex-col justify-center;
   padding: 80px 0;
 }
 
-/* Section numbering (#01 style) */
 .section-number {
-  @apply text-sm font-bold uppercase tracking-widest text-ink-soft;
+  @apply text-sm font-mono font-bold uppercase tracking-widest text-accent;
   font-variant-numeric: tabular-nums;
 }
 
-/* Scroll indicator */
 .scroll-indicator {
   @apply text-xs uppercase tracking-[0.3em] text-ink-soft;
   animation: float 2s ease-in-out infinite;
@@ -178,30 +151,73 @@
   50% { transform: translateY(8px); }
 }
 
-/* Horizontal scroll container */
 .horizontal-scroll {
   @apply flex gap-8;
   will-change: transform;
 }
 
-/* Card base */
-.card {
-  @apply bg-surface rounded-card shadow-card transition-shadow duration-300;
+/* ================================================
+   GLOW EFFECTS
+   ================================================ */
+
+.glow-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #7C5CFC, transparent);
+  opacity: 0.3;
 }
 
-.card:hover {
-  @apply shadow-card-hover;
+.glow-dot {
+  @apply w-2 h-2 rounded-full bg-accent;
+  box-shadow: 0 0 10px rgba(124, 92, 252, 0.5);
 }
 
-/* Focus visible for accessibility */
+/* Availability badge */
+.badge-available {
+  @apply inline-flex items-center gap-2 px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full;
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ADE80;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.badge-available::before {
+  content: '';
+  @apply w-1.5 h-1.5 rounded-full;
+  background: #4ADE80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ================================================
+   NOISE OVERLAY
+   ================================================ */
+
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================================================
+   FOCUS VISIBLE
+   ================================================ */
+
 :focus-visible {
-  outline: 2px solid #1A1A1A;
+  outline: 2px solid #7C5CFC;
   outline-offset: 2px;
 }
 
-/* Vertical side text decoration (like silencio.es) */
+/* Side text decoration */
 .side-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  @apply text-xs uppercase tracking-[0.3em] text-ink-soft fixed left-4 top-1/2 -translate-y-1/2 z-10;
+  @apply text-xs font-mono uppercase tracking-[0.3em] text-ink-muted fixed left-4 top-1/2 -translate-y-1/2 z-10;
 }

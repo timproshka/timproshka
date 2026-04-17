@@ -5,41 +5,37 @@ interface Props {
 }
 
 const {
-  title = 'timproshka — \u0412\u0435\u0431-\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0438 AI-\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f',
-  description = '\u0421\u043e\u0437\u0434\u0430\u0451\u043c \u0446\u0438\u0444\u0440\u043e\u0432\u044b\u0435 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u044b \u0434\u043b\u044f \u0441\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0433\u043e \u0431\u0438\u0437\u043d\u0435\u0441\u0430. \u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0441\u0430\u0439\u0442\u043e\u0432, \u0447\u0430\u0442-\u0431\u043e\u0442\u044b, AI-\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u044f. \u041f\u0435\u0440\u043c\u044c.',
+  title = 'timproshka — Web Developer & AI Automation Engineer',
+  description = 'I build websites that convert and AI systems that save time. Web development, chatbots, and automation. Available for freelance projects.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
 
-    <!-- OG Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og.png" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Font: Inter -->
+    <!-- Fonts: Inter + Instrument Serif + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
-  <body>
+  <body class="noise-overlay">
     <slot />
 
-    <!-- Scripts loaded at the end for performance -->
     <script>
       import { gsap } from 'gsap';
       import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -54,17 +50,15 @@ const {
         touchMultiplier: 2,
       });
 
-      // Sync Lenis with GSAP ticker
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time: number) => {
         lenis.raf(time * 1000);
       });
       gsap.ticker.lagSmoothing(0);
 
-      // ===== ANIMATION SAFETY: Add .js-ready only after GSAP init =====
+      // ===== JS-READY FLAG =====
       document.documentElement.classList.add('js-ready');
 
-      // Fallback: if scroll doesn't fire within 3s, remove .js-ready
       const fallbackTimer = setTimeout(() => {
         document.documentElement.classList.remove('js-ready');
       }, 3000);
@@ -105,8 +99,7 @@ const {
           });
       }
 
-      // ===== SCROLL REVEAL ANIMATIONS =====
-      // Reveal elements on scroll
+      // ===== SCROLL REVEAL =====
       const reveals = document.querySelectorAll('.reveal');
       reveals.forEach((el) => {
         gsap.set(el, { opacity: 0, y: 40 });
@@ -123,7 +116,6 @@ const {
         });
       });
 
-      // Reveal-up (bigger offset)
       const revealUps = document.querySelectorAll('.reveal-up');
       revealUps.forEach((el) => {
         gsap.set(el, { opacity: 0, y: 60 });
@@ -140,7 +132,6 @@ const {
         });
       });
 
-      // Reveal-scale (portfolio cards)
       const revealScales = document.querySelectorAll('.reveal-scale');
       revealScales.forEach((el) => {
         gsap.set(el, { opacity: 0, scale: 0.85 });
@@ -157,7 +148,6 @@ const {
         });
       });
 
-      // Stagger children
       const staggerParents = document.querySelectorAll('[data-stagger]');
       staggerParents.forEach((parent) => {
         const children = parent.children;
@@ -183,13 +173,13 @@ const {
         gsap.to(heroWords, {
           y: 0,
           duration: 0.8,
-          stagger: 0.1,
+          stagger: 0.06,
           ease: 'power3.out',
-          delay: 2.2, // After intro
+          delay: 2.2,
         });
       }
 
-      // ===== SERVICES: clipPath reveal for numbers =====
+      // ===== SERVICES: clipPath reveal =====
       const sectionNumbers = document.querySelectorAll('.section-number-reveal');
       sectionNumbers.forEach((el) => {
         gsap.set(el, { clipPath: 'inset(0 100% 0 0)' });
@@ -201,21 +191,6 @@ const {
             trigger: el,
             start: 'top 80%',
             toggleActions: 'play none none none',
-          },
-        });
-      });
-
-      // ===== PORTFOLIO: Parallax images =====
-      const parallaxImages = document.querySelectorAll('[data-parallax]');
-      parallaxImages.forEach((img) => {
-        gsap.to(img, {
-          y: -60,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: img.closest('.card') || img,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
           },
         });
       });
@@ -241,7 +216,7 @@ const {
         });
       }
 
-      // ===== HEADER: Show on scroll past intro =====
+      // ===== HEADER: Show on scroll =====
       if (header) {
         header.style.opacity = '0';
         header.style.transition = 'opacity 0.3s ease';

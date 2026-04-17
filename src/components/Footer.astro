@@ -1,23 +1,48 @@
 ---
 const year = new Date().getFullYear();
+
+const metadata = [
+  { label: 'Location', value: 'Perm, Russia' },
+  { label: 'Timezone', value: 'UTC+5' },
+  { label: 'Status', value: 'Available', accent: true },
+  { label: 'Stack', value: 'Astro · React · Tailwind · n8n' },
+];
+
 const links = [
-  { href: '#services', label: '\u0423\u0441\u043b\u0443\u0433\u0438' },
-  { href: '#portfolio', label: '\u041f\u043e\u0440\u0442\u0444\u043e\u043b\u0438\u043e' },
-  { href: '#process', label: '\u041f\u0440\u043e\u0446\u0435\u0441\u0441' },
-  { href: '#about', label: '\u041e\u0431\u043e \u043c\u043d\u0435' },
-  { href: '#contact', label: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442' },
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#work', label: 'Work' },
+  { href: '#process', label: 'Process' },
+  { href: '#contact', label: 'Contact' },
 ];
 ---
 
-<footer class="border-t border-border py-12 md:py-16">
+<footer class="border-t border-surface-border py-12 md:py-16">
   <div class="max-w-6xl mx-auto px-6">
+    <!-- Metadata grid (Maxime Heckel style) -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      {metadata.map((item) => (
+        <div>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-ink-muted block mb-1">
+            {item.label}
+          </span>
+          <span class:list={[
+            'text-sm font-mono',
+            item.accent ? 'text-green-400' : 'text-ink-soft'
+          ]}>
+            {item.value}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <div class="glow-line mb-10"></div>
+
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-      <!-- Logo -->
       <a href="#" class="text-lg font-black uppercase tracking-wider text-ink">
         timproshka
       </a>
 
-      <!-- Nav -->
       <nav class="flex flex-wrap justify-center gap-6">
         {links.map((link) => (
           <a
@@ -29,13 +54,12 @@ const links = [
         ))}
       </nav>
 
-      <!-- Social -->
       <div class="flex items-center gap-4">
         <a
           href="https://t.me/timproshka"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-soft hover:text-ink hover:border-ink transition-all"
+          class="w-10 h-10 rounded-full border border-surface-border flex items-center justify-center text-ink-soft hover:text-accent hover:border-accent transition-all"
           aria-label="Telegram"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -46,7 +70,7 @@ const links = [
           href="https://github.com/timproshka"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-ink-soft hover:text-ink hover:border-ink transition-all"
+          class="w-10 h-10 rounded-full border border-surface-border flex items-center justify-center text-ink-soft hover:text-accent hover:border-accent transition-all"
           aria-label="GitHub"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -56,10 +80,9 @@ const links = [
       </div>
     </div>
 
-    <!-- Copyright -->
-    <div class="mt-10 pt-8 border-t border-border text-center">
-      <p class="text-xs text-ink-soft uppercase tracking-widest">
-        timproshka &reg; {year}
+    <div class="mt-10 pt-8 border-t border-surface-border text-center">
+      <p class="text-xs font-mono text-ink-muted uppercase tracking-widest">
+        &copy; {year} timproshka &middot; Design & Built in Perm
       </p>
     </div>
   </div>

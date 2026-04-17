@@ -5,3 +5,16 @@ dist/
 generate-previews.mjs
 
 .vercel
+
+# env files
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

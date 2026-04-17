@@ -2,23 +2,23 @@
 const services = [
   {
     num: '01',
-    title: 'Сайт, который продаёт',
-    result: 'Первые заявки с сайта — в течение недели после запуска',
-    desc: 'Не просто красивая страница, а инструмент для бизнеса. Ваш сайт будет быстро загружаться, удобно выглядеть на телефоне и находиться в поиске Яндекса и Google.',
+    title: 'Web Development',
+    result: 'First leads within a week of launch',
+    desc: 'Fast, responsive websites built with modern frameworks. Your site will load in under 2 seconds, look great on any device, and rank well in search engines.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
   },
   {
     num: '02',
-    title: 'Чат-бот вместо менеджера',
-    result: 'Отвечает клиентам 24/7 — даже ночью и в выходные',
-    desc: 'Бот в Telegram или на сайте, который записывает на услуги, отвечает на вопросы и собирает заявки. Вам не нужно нанимать ещё одного сотрудника.',
+    title: 'AI Chatbots',
+    result: 'Handles clients 24/7 — even nights and weekends',
+    desc: 'Telegram or website bots that book appointments, answer questions, and collect leads automatically. No need to hire another support person.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>',
   },
   {
     num: '03',
-    title: 'Автоматизация рутины',
-    result: 'Экономия 15+ часов в неделю на повторяющихся задачах',
-    desc: 'Автоматическая обработка заявок, создание отчётов, рассылки и напоминания. То, что вы делаете руками каждый день — будет работать само.',
+    title: 'Automation',
+    result: 'Save 15+ hours per week on repetitive tasks',
+    desc: 'Automated lead processing, report generation, email sequences, and notifications. What you do manually every day — runs on autopilot.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>',
   },
 ];
@@ -27,31 +27,30 @@ const services = [
 <section id="services" class="section-full">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-20 reveal">
-      <span class="section-number">Что вы получите</span>
-      <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">Не просто сайт, а результат</h2>
+      <span class="section-number">What I do</span>
+      <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">
+        Not just a site — <span class="font-serif italic font-normal text-accent">results</span>
+      </h2>
     </div>
 
     <div class="space-y-16 md:space-y-24" data-stagger>
       {services.map((service) => (
         <div class="grid md:grid-cols-12 gap-6 md:gap-12 items-start group">
-          <!-- Number -->
           <div class="md:col-span-2">
-            <span class="section-number-reveal text-6xl md:text-7xl font-black text-ink/10">
+            <span class="section-number-reveal text-6xl md:text-7xl font-black text-ink/5">
               #{service.num}
             </span>
           </div>
 
-          <!-- Content -->
           <div class="md:col-span-10">
             <div class="flex items-center gap-3 mb-3">
-              <svg class="w-6 h-6 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <Fragment set:html={service.icon} />
               </svg>
               <h3 class="text-2xl md:text-3xl font-bold">{service.title}</h3>
             </div>
-            <!-- Result highlight -->
-            <p class="text-base font-semibold text-ink mb-3 flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <p class="text-base font-semibold text-accent/80 mb-3 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               {service.result}

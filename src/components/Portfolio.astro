@@ -1,122 +1,113 @@
 ---
 const projects = [
   {
-    title: 'Нужный адрес',
-    desc: 'Агентство недвижимости в Перми. Сделали сайт с анимациями — загружается за 1.2 сек, удобен на телефоне.',
-    result: 'Сайт с нуля за 10 дней',
-    tags: ['Сайт', 'Анимации'],
+    title: 'Nuzhnyi Adres',
+    desc: 'Real estate agency website with smooth animations. Loads in 1.2s, fully responsive.',
+    result: 'Built from scratch in 10 days',
+    tags: ['Website', 'Animations'],
     image: '/projects/nuzhnyi-adres.jpg',
-    gradient: 'from-blue-100 to-blue-50',
     url: 'https://nuzhnyi-adres.ru',
-    real: true,
+    live: true,
   },
   {
-    title: 'Оника',
-    desc: 'Бухгалтерская компания. Корпоративный сайт с формами заявок и информацией об услугах.',
-    result: 'Заявки с сайта с первой недели',
-    tags: ['Сайт', 'Формы'],
+    title: 'Onica',
+    desc: 'Corporate website for an accounting firm. Lead capture forms, service pages, SEO optimization.',
+    result: 'Leads from the site within the first week',
+    tags: ['Website', 'Forms'],
     image: '/projects/onica.jpg',
-    gradient: 'from-emerald-100 to-emerald-50',
     url: 'https://onica59.ru',
-    real: true,
+    live: true,
   },
   {
-    title: 'AI-ассистент клиники',
-    desc: 'Бот в Telegram для записи на приём. Связан с календарём врачей и базой клиентов.',
-    result: 'Записывает клиентов 24/7 без участия администратора',
-    tags: ['Чат-бот', 'Telegram'],
+    title: 'AI Clinic Assistant',
+    desc: 'Telegram bot for appointment booking. Connected to doctor calendars and client database.',
+    result: 'Books clients 24/7 without admin involvement',
+    tags: ['Chatbot', 'Telegram'],
     image: null,
-    gradient: 'from-violet-200 to-violet-50',
     url: null,
-    real: false,
+    live: false,
   },
   {
-    title: 'Автоматизация отчётов',
-    desc: 'Настроили автоматический сбор данных из разных источников и еженедельную отправку отчёта руководителю.',
-    result: 'Экономия 8 часов в неделю',
-    tags: ['Автоматизация', 'Отчёты'],
+    title: 'Report Automation',
+    desc: 'Automated data collection from multiple sources with weekly report delivery to management.',
+    result: 'Saves 8 hours per week',
+    tags: ['Automation', 'Reports'],
     image: null,
-    gradient: 'from-amber-200 to-amber-50',
     url: null,
-    real: false,
+    live: false,
   },
 ];
 ---
 
-<section id="portfolio" class="section-full">
+<section id="work" class="section-full">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-20 reveal">
-      <span class="section-number">Портфолио</span>
-      <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">Наши работы</h2>
+      <span class="section-number">Portfolio</span>
+      <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">
+        Selected <span class="font-serif italic font-normal text-accent">work</span>
+      </h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8">
-      {projects.map((project) => {
-        const Wrapper = project.url ? 'a' : 'div';
-        const linkProps = project.url ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' } : {};
-        return (
-          <a
-            href={project.url || '#portfolio'}
-            target={project.url ? '_blank' : undefined}
-            rel={project.url ? 'noopener noreferrer' : undefined}
-            class:list={[
-              'card overflow-hidden reveal-scale group block',
-              project.url && 'cursor-pointer',
-              !project.url && 'pointer-events-none'
-            ]}
-          >
-            <!-- Visual area with image or gradient -->
-            <div class={`bg-gradient-to-br ${project.gradient} h-48 md:h-64 flex items-center justify-center relative overflow-hidden`}>
-              {project.image ? (
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              ) : (
-                <div class="text-center px-8">
-                  <p class="text-3xl md:text-4xl font-black text-ink/20 uppercase leading-tight">{project.title}</p>
-                </div>
-              )}
-              {project.real && (
-                <span class="absolute top-4 right-4 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-ink text-bg rounded-full flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-                  Работает
-                </span>
-              )}
-              {project.url && (
-                <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/5 transition-colors duration-300 flex items-center justify-center">
-                  <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold text-ink bg-bg/80 backdrop-blur-sm px-4 py-2 rounded-full">
-                    Открыть сайт &rarr;
-                  </span>
-                </div>
-              )}
-            </div>
-
-            <!-- Content -->
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">{project.title}</h3>
-              <p class="text-ink-soft text-sm leading-relaxed mb-3">{project.desc}</p>
-              {project.result && (
-                <p class="text-sm font-semibold text-ink flex items-center gap-1.5 mb-3">
-                  <svg class="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {project.result}
-                </p>
-              )}
-              <div class="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span class="px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider border border-border rounded-full text-ink-soft">
-                    {tag}
-                  </span>
-                ))}
+      {projects.map((project) => (
+        <a
+          href={project.url || '#work'}
+          target={project.url ? '_blank' : undefined}
+          rel={project.url ? 'noopener noreferrer' : undefined}
+          class:list={[
+            'card overflow-hidden reveal-scale group block',
+            project.url && 'cursor-pointer',
+            !project.url && 'pointer-events-none'
+          ]}
+        >
+          <div class="h-48 md:h-64 flex items-center justify-center relative overflow-hidden bg-surface">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            ) : (
+              <div class="text-center px-8">
+                <p class="text-3xl md:text-4xl font-black text-ink/10 uppercase leading-tight">{project.title}</p>
               </div>
+            )}
+            {project.live && (
+              <span class="absolute top-4 right-4 badge-available text-[10px]">
+                Live
+              </span>
+            )}
+            {project.url && (
+              <div class="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-300 flex items-center justify-center">
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold text-ink bg-surface/80 backdrop-blur-sm px-4 py-2 rounded-full">
+                  View site &rarr;
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">{project.title}</h3>
+            <p class="text-ink-soft text-sm leading-relaxed mb-3">{project.desc}</p>
+            {project.result && (
+              <p class="text-sm font-semibold text-accent/80 flex items-center gap-1.5 mb-3">
+                <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {project.result}
+              </p>
+            )}
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="px-2.5 py-0.5 text-[11px] font-mono font-medium uppercase tracking-wider border border-surface-border rounded-full text-ink-muted">
+                  {tag}
+                </span>
+              ))}
             </div>
-          </a>
-        );
-      })}
+          </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>

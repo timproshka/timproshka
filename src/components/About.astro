@@ -1,44 +1,44 @@
 ---
-const stack = ['Astro', 'React', 'Tailwind', 'GSAP', 'n8n', 'Python', 'Node.js', 'TypeScript'];
+const stack = ['Astro', 'React', 'Tailwind', 'Three.js', 'GSAP', 'n8n', 'Python', 'Node.js', 'TypeScript'];
 ---
 
 <section id="about" class="section-full">
   <div class="max-w-4xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <!-- Avatar placeholder -->
       <div class="reveal-scale">
-        <div class="aspect-square rounded-card overflow-hidden">
+        <div class="aspect-square rounded-card overflow-hidden border border-surface-border">
           <img
             src="/photo.jpg"
-            alt="Тимофей — основатель timproshka"
+            alt="Timofey — founder of timproshka"
             class="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
       </div>
 
-      <!-- Bio -->
       <div>
-        <span class="section-number reveal">Обо мне</span>
-        <h2 class="text-3xl md:text-4xl font-black uppercase mt-3 mb-6 reveal">Тимофей</h2>
+        <span class="section-number reveal">About</span>
+        <h2 class="text-3xl md:text-4xl font-black uppercase mt-3 mb-2 reveal">Timofey</h2>
+        <p class="text-accent font-serif italic text-lg mb-6 reveal">Web Developer & AI Engineer</p>
 
         <div class="space-y-4 text-ink-soft leading-relaxed">
           <p class="reveal">
-            20 лет, Пермь. Занимаюсь веб-разработкой и AI-автоматизацией.
-            Создаю сайты, которые не просто работают, а впечатляют.
+            Hey! I'm a 19 y/o web developer and AI automation engineer based in Perm, Russia.
+            I craft fast, beautiful websites and build chatbots & automation pipelines
+            that handle the boring stuff so you don't have to.
           </p>
           <p class="reveal">
-            Строю чат-ботов, которые экономят время, и настраиваю AI-сценарии,
-            которые делают рутину за вас.
+            I work with modern tech — from Astro and React on the frontend to n8n and Python
+            for AI-powered automation. Every project I deliver is built for speed, conversion,
+            and real business results.
           </p>
         </div>
 
-        <!-- Stack icons -->
         <div class="mt-8 reveal">
-          <span class="text-xs font-bold uppercase tracking-widest text-ink-soft mb-4 block">Технологии</span>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted mb-4 block">Tech Stack</span>
           <div class="flex flex-wrap gap-2" data-stagger>
             {stack.map((name) => (
-              <span class="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider border border-border rounded-full text-ink-soft hover:bg-ink hover:text-bg hover:border-ink transition-all duration-200">
+              <span class="px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider border border-surface-border rounded-full text-ink-soft hover:bg-accent hover:text-white hover:border-accent transition-all duration-200">
                 {name}
               </span>
             ))}
