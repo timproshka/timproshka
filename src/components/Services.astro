@@ -1,35 +1,27 @@
 ---
-const services = [
-  {
-    num: '01',
-    title: 'Web Development',
-    result: 'First leads within a week of launch',
-    desc: 'Fast, responsive websites built with modern frameworks. Your site will load in under 2 seconds, look great on any device, and rank well in search engines.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
-  },
-  {
-    num: '02',
-    title: 'AI Chatbots',
-    result: 'Handles clients 24/7 — even nights and weekends',
-    desc: 'Telegram or website bots that book appointments, answer questions, and collect leads automatically. No need to hire another support person.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>',
-  },
-  {
-    num: '03',
-    title: 'Automation',
-    result: 'Save 15+ hours per week on repetitive tasks',
-    desc: 'Automated lead processing, report generation, email sequences, and notifications. What you do manually every day — runs on autopilot.',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>',
-  },
+import { getLangFromUrl, useTranslations } from '../i18n/useTranslations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const icons = [
+  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
+  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>',
+  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>',
 ];
+
+const services = t.services.items.map((item, idx) => ({
+  ...item,
+  icon: icons[idx] ?? icons[0],
+}));
 ---
 
 <section id="services" class="section-full">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-20 reveal">
-      <span class="section-number">What I do</span>
+      <span class="section-number">{t.services.label}</span>
       <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">
-        Not just a site — <span class="font-serif italic font-normal text-accent">results</span>
+        {t.services.titlePart1}<span class="font-serif italic font-normal text-accent">{t.services.titlePart2}</span>
       </h2>
     </div>
 

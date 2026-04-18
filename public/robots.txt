@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://timproshka.com/sitemap-index.xml
