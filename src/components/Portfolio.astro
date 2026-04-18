@@ -1,50 +1,18 @@
 ---
-const projects = [
-  {
-    title: 'Nuzhnyi Adres',
-    desc: 'Real estate agency website with smooth animations. Loads in 1.2s, fully responsive.',
-    result: 'Built from scratch in 10 days',
-    tags: ['Website', 'Animations'],
-    image: '/projects/nuzhnyi-adres.jpg',
-    url: 'https://nuzhnyi-adres.ru',
-    live: true,
-  },
-  {
-    title: 'Onica',
-    desc: 'Corporate website for an accounting firm. Lead capture forms, service pages, SEO optimization.',
-    result: 'Leads from the site within the first week',
-    tags: ['Website', 'Forms'],
-    image: '/projects/onica.jpg',
-    url: 'https://onica59.ru',
-    live: true,
-  },
-  {
-    title: 'AI Clinic Assistant',
-    desc: 'Telegram bot for appointment booking. Connected to doctor calendars and client database.',
-    result: 'Books clients 24/7 without admin involvement',
-    tags: ['Chatbot', 'Telegram'],
-    image: null,
-    url: null,
-    live: false,
-  },
-  {
-    title: 'Report Automation',
-    desc: 'Automated data collection from multiple sources with weekly report delivery to management.',
-    result: 'Saves 8 hours per week',
-    tags: ['Automation', 'Reports'],
-    image: null,
-    url: null,
-    live: false,
-  },
-];
+import { getLangFromUrl, useTranslations } from '../i18n/useTranslations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = t.portfolio.items;
 ---
 
 <section id="work" class="section-full">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-20 reveal">
-      <span class="section-number">Portfolio</span>
+      <span class="section-number">{t.portfolio.label}</span>
       <h2 class="text-4xl md:text-5xl font-black uppercase mt-3">
-        Selected <span class="font-serif italic font-normal text-accent">work</span>
+        {t.portfolio.titlePart1}<span class="font-serif italic font-normal text-accent">{t.portfolio.titlePart2}</span>
       </h2>
     </div>
 
@@ -75,13 +43,13 @@ const projects = [
             )}
             {project.live && (
               <span class="absolute top-4 right-4 badge-available text-[10px]">
-                Live
+                {t.portfolio.liveBadge}
               </span>
             )}
             {project.url && (
               <div class="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-300 flex items-center justify-center">
                 <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold text-ink bg-surface/80 backdrop-blur-sm px-4 py-2 rounded-full">
-                  View site &rarr;
+                  {t.portfolio.viewSite}
                 </span>
               </div>
             )}

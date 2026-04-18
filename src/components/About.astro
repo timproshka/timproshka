@@ -1,4 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/useTranslations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const stack = ['Astro', 'React', 'Tailwind', 'Three.js', 'GSAP', 'n8n', 'Python', 'Node.js', 'TypeScript'];
 ---
 
@@ -9,7 +14,7 @@ const stack = ['Astro', 'React', 'Tailwind', 'Three.js', 'GSAP', 'n8n', 'Python'
         <div class="aspect-square rounded-card overflow-hidden border border-surface-border">
           <img
             src="/photo.jpg"
-            alt="Timofey — founder of timproshka"
+            alt={t.about.photoAlt}
             class="w-full h-full object-cover"
             loading="lazy"
           />
@@ -17,25 +22,17 @@ const stack = ['Astro', 'React', 'Tailwind', 'Three.js', 'GSAP', 'n8n', 'Python'
       </div>
 
       <div>
-        <span class="section-number reveal">About</span>
-        <h2 class="text-3xl md:text-4xl font-black uppercase mt-3 mb-2 reveal">Timofey</h2>
-        <p class="text-accent font-serif italic text-lg mb-6 reveal">Web Developer & AI Engineer</p>
+        <span class="section-number reveal">{t.about.label}</span>
+        <h2 class="text-3xl md:text-4xl font-black uppercase mt-3 mb-2 reveal">{t.about.name}</h2>
+        <p class="text-accent font-serif italic text-lg mb-6 reveal">{t.about.role}</p>
 
         <div class="space-y-4 text-ink-soft leading-relaxed">
-          <p class="reveal">
-            Hey! I'm a 19 y/o web developer and AI automation engineer based in Perm, Russia.
-            I craft fast, beautiful websites and build chatbots & automation pipelines
-            that handle the boring stuff so you don't have to.
-          </p>
-          <p class="reveal">
-            I work with modern tech — from Astro and React on the frontend to n8n and Python
-            for AI-powered automation. Every project I deliver is built for speed, conversion,
-            and real business results.
-          </p>
+          <p class="reveal">{t.about.p1}</p>
+          <p class="reveal">{t.about.p2}</p>
         </div>
 
         <div class="mt-8 reveal">
-          <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted mb-4 block">Tech Stack</span>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted mb-4 block">{t.about.stackLabel}</span>
           <div class="flex flex-wrap gap-2" data-stagger>
             {stack.map((name) => (
               <span class="px-3 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider border border-surface-border rounded-full text-ink-soft hover:bg-accent hover:text-white hover:border-accent transition-all duration-200">

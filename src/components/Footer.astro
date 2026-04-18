@@ -1,25 +1,32 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/useTranslations';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const year = new Date().getFullYear();
 
 const metadata = [
-  { label: 'Location', value: 'Perm, Russia' },
-  { label: 'Timezone', value: 'UTC+5' },
-  { label: 'Status', value: 'Available', accent: true },
-  { label: 'Stack', value: 'Astro · React · Tailwind · n8n' },
+  { label: t.footer.locationLabel, value: t.footer.locationValue },
+  { label: t.footer.timezoneLabel, value: t.footer.timezoneValue },
+  { label: t.footer.statusLabel, value: t.footer.statusValue, accent: true },
+  { label: t.footer.stackLabel, value: t.footer.stackValue },
 ];
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Work' },
-  { href: '#process', label: 'Process' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about', label: t.nav.about },
+  { href: '#services', label: t.nav.services },
+  { href: '#work', label: t.nav.work },
+  { href: '#process', label: t.nav.process },
+  { href: '#contact', label: t.nav.contact },
 ];
+
+const copyright = t.footer.copyright.replace('{year}', String(year));
 ---
 
 <footer class="border-t border-surface-border py-12 md:py-16">
   <div class="max-w-6xl mx-auto px-6">
-    <!-- Metadata grid (Maxime Heckel style) -->
+    <!-- Metadata grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
       {metadata.map((item) => (
         <div>
@@ -82,7 +89,7 @@ const links = [
 
     <div class="mt-10 pt-8 border-t border-surface-border text-center">
       <p class="text-xs font-mono text-ink-muted uppercase tracking-widest">
-        &copy; {year} timproshka &middot; Design & Built in Perm
+        {copyright}
       </p>
     </div>
   </div>

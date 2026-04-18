@@ -1,9 +1,16 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/useTranslations';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = getLocalizedPath('/', lang);
+
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#work', label: 'Work' },
-  { href: '#process', label: 'Process' },
+  { href: '#about', label: t.nav.about },
+  { href: '#services', label: t.nav.services },
+  { href: '#work', label: t.nav.work },
+  { href: '#process', label: t.nav.process },
 ];
 ---
 
@@ -13,7 +20,7 @@ const navLinks = [
   style="opacity: 0; transition: opacity 0.3s ease;"
 >
   <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#" class="text-lg font-black uppercase tracking-wider text-ink">
+    <a href={home} class="text-lg font-black uppercase tracking-wider text-ink">
       timproshka
     </a>
 
@@ -28,27 +35,33 @@ const navLinks = [
       ))}
     </div>
 
-    <a
-      href="#contact"
-      class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-full hover:bg-accent-hover transition-colors duration-200"
-    >
-      Let's talk
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
+    <div class="hidden md:flex items-center gap-4">
+      <LanguageSwitcher />
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-full hover:bg-accent-hover transition-colors duration-200"
+      >
+        {t.nav.letsTalk}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
 
-    <button
-      id="burger-btn"
-      class="md:hidden w-10 h-10 flex items-center justify-center"
-      aria-label="Open menu"
-    >
-      <div class="space-y-1.5">
-        <span class="block w-6 h-0.5 bg-ink transition-transform"></span>
-        <span class="block w-6 h-0.5 bg-ink transition-opacity"></span>
-        <span class="block w-4 h-0.5 bg-ink transition-transform"></span>
-      </div>
-    </button>
+    <div class="md:hidden flex items-center gap-2">
+      <LanguageSwitcher />
+      <button
+        id="burger-btn"
+        class="w-10 h-10 flex items-center justify-center"
+        aria-label={t.nav.openMenu}
+      >
+        <div class="space-y-1.5">
+          <span class="block w-6 h-0.5 bg-ink transition-transform"></span>
+          <span class="block w-6 h-0.5 bg-ink transition-opacity"></span>
+          <span class="block w-4 h-0.5 bg-ink transition-transform"></span>
+        </div>
+      </button>
+    </div>
   </nav>
 
   <div
@@ -69,7 +82,7 @@ const navLinks = [
         href="#contact"
         class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-full mt-2"
       >
-        Let's talk
+        {t.nav.letsTalk}
       </a>
     </div>
   </div>

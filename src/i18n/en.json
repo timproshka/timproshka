@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "title": "timproshka — Web Developer & AI Automation Engineer",
+    "description": "I build websites that convert and AI systems that save time. Web development, chatbots, and automation. Available for freelance projects.",
+    "ogType": "website",
+    "siteName": "timproshka"
+  },
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "work": "Work",
+    "process": "Process",
+    "contact": "Contact",
+    "letsTalk": "Let's talk",
+    "openMenu": "Open menu"
+  },
+  "hero": {
+    "subtitle": "Fast Astro sites + AI automation for B2B service firms",
+    "description": "I ship production sites in 10 days and automations that save 15+ hours a week.",
+    "cta": "Let's talk",
+    "viewWork": "View work ↓",
+    "scrollDown": "Scroll down"
+  },
+  "about": {
+    "label": "About",
+    "name": "Timofey",
+    "role": "Web Developer & AI Engineer",
+    "photoAlt": "Timofey — founder of timproshka",
+    "p1": "Hey! I'm a 19 y/o web developer and AI automation engineer based in Perm, Russia. I craft fast, beautiful websites and build chatbots & automation pipelines that handle the boring stuff so you don't have to.",
+    "p2": "I work with modern tech — from Astro and React on the frontend to n8n and Python for AI-powered automation. Every project I deliver is built for speed, conversion, and real business results.",
+    "stackLabel": "Tech Stack"
+  },
+  "services": {
+    "label": "What I do",
+    "titlePart1": "Not just a site — ",
+    "titlePart2": "results",
+    "items": [
+      {
+        "num": "01",
+        "title": "Web Development",
+        "result": "First leads within a week of launch",
+        "desc": "Fast, responsive websites built with modern frameworks. Your site will load in under 2 seconds, look great on any device, and rank well in search engines."
+      },
+      {
+        "num": "02",
+        "title": "AI Chatbots",
+        "result": "Handles clients 24/7 — even nights and weekends",
+        "desc": "Telegram or website bots that book appointments, answer questions, and collect leads automatically. No need to hire another support person."
+      },
+      {
+        "num": "03",
+        "title": "Automation",
+        "result": "Save 15+ hours per week on repetitive tasks",
+        "desc": "Automated lead processing, report generation, email sequences, and notifications. What you do manually every day — runs on autopilot."
+      }
+    ]
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "titlePart1": "Selected ",
+    "titlePart2": "work",
+    "viewSite": "View site →",
+    "liveBadge": "Live",
+    "items": [
+      {
+        "title": "Nuzhnyi Adres",
+        "desc": "Real estate agency website with smooth animations. Loads in 1.2s, fully responsive.",
+        "result": "Built from scratch in 10 days",
+        "tags": ["Website", "Animations"],
+        "image": "/projects/nuzhnyi-adres.jpg",
+        "url": "https://nuzhnyi-adres.ru",
+        "live": true
+      },
+      {
+        "title": "Onica",
+        "desc": "Corporate website for an accounting firm. Lead capture forms, service pages, SEO optimization.",
+        "result": "Leads from the site within the first week",
+        "tags": ["Website", "Forms"],
+        "image": "/projects/onica.jpg",
+        "url": "https://onica59.ru",
+        "live": true
+      },
+      {
+        "title": "AS-Luch Driving School",
+        "desc": "Website for driving school with 4 branches in Perm. Online booking, class schedule, local SEO.",
+        "result": "Ranks in top for local search",
+        "tags": ["Website", "Local SEO"],
+        "image": null,
+        "url": "https://as-luch.ru",
+        "live": true
+      },
+      {
+        "title": "Report Automation",
+        "desc": "Automated data collection from multiple sources with weekly report delivery to management.",
+        "result": "Saves 8 hours per week",
+        "tags": ["Automation", "Reports"],
+        "image": null,
+        "url": null,
+        "live": false
+      }
+    ]
+  },
+  "process": {
+    "label": "Process",
+    "titlePart1": "How I ",
+    "titlePart2": "work",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Discovery",
+        "desc": "We discuss your goals, analyze competitors, and define what success looks like for your project."
+      },
+      {
+        "num": "02",
+        "title": "Design",
+        "desc": "I create the visual concept and layout. You approve the design before any code is written."
+      },
+      {
+        "num": "03",
+        "title": "Development",
+        "desc": "Clean code, real content, daily progress updates. You see the site come to life step by step."
+      },
+      {
+        "num": "04",
+        "title": "Launch",
+        "desc": "Testing, deployment, analytics setup, and post-launch support. Your site is live and working."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "titlePart1": "Let's build ",
+    "titlePart2": "something",
+    "titlePart3": "great",
+    "intro": "Have a project in mind? Drop me a message — I usually reply within a few hours.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "contactLabel": "Telegram / Email",
+      "contactPlaceholder": "@username or email",
+      "projectLabel": "Project details",
+      "projectPlaceholder": "Tell me about your project...",
+      "submit": "Send message",
+      "sent": "Sent!"
+    },
+    "reachOut": "Or reach out directly",
+    "replyTime": "I usually reply within a few hours.",
+    "location": "Perm, Russia · UTC+5",
+    "telegramMessage": "New inquiry from timproshka.com"
+  },
+  "footer": {
+    "locationLabel": "Location",
+    "locationValue": "Perm, Russia",
+    "timezoneLabel": "Timezone",
+    "timezoneValue": "UTC+5",
+    "statusLabel": "Status",
+    "statusValue": "Available",
+    "stackLabel": "Stack",
+    "stackValue": "Astro · React · Tailwind · n8n",
+    "copyright": "© {year} timproshka · Design & Built in Perm"
+  }
+}
