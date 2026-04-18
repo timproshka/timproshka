@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
           'lang-link px-2 py-1 rounded transition-colors uppercase tracking-wider',
           isActive ? 'text-ink bg-ink/5' : 'text-ink-muted hover:text-ink'
         ]}
-        aria-current={isActive ? 'true' : undefined}
+        aria-current={isActive ? 'page' : undefined}
       >
         {label}
       </a>
@@ -45,22 +45,34 @@ const currentPath = Astro.url.pathname;
   // Auto-redirect to preferred language on first paint,
   // only if user hasn't been redirected in this session (avoids loops).
   const REDIRECT_KEY = 'lang-redirect-done';
-  try {
-    const saved = localStorage.getItem(LANG_KEY);
-    const alreadyRedirected = sessionStorage.getItem(REDIRECT_KEY);
-    if (saved && !alreadyRedirected) {
-      const path = window.location.pathname;
-      const onEn = /^\/en(?=\/|$)/.test(path);
-      if (saved === 'en' && !onEn) {
-        sessionStorage.setItem(REDIRECT_KEY, '1');
-        window.location.replace('/en' + (path === '/' ? '' : path));
-      } else if (saved === 'ru' && onEn) {
-        sessionStorage.setItem(REDIRECT_KEY, '1');
-        const stripped = path.replace(/^\/en/, '') || '/';
-        window.location.replace(stripped);
-      }
+
+  function markRedirected() {
+    try {
+      sessionStorage.setItem(REDIRECT_KEY, '1');
+    } catch {
+      // sessionStorage unavailable — destination page will guard against loop via URL match
     }
+  }
+
+  let saved: string | null = null;
+  let alreadyRedirected: string | null = null;
+  try {
+    saved = localStorage.getItem(LANG_KEY);
+    alreadyRedirected = sessionStorage.getItem(REDIRECT_KEY);
   } catch {
-    // Storage unavailable — skip auto-redirect
+    // Storage unavailable — skip auto-redirect entirely
+  }
+
+  if (saved && !alreadyRedirected) {
+    const path = window.location.pathname;
+    const onEn = /^\/en(?=\/|$)/.test(path);
+    if (saved === 'en' && !onEn) {
+      markRedirected();
+      window.location.replace('/en' + (path === '/' ? '' : path));
+    } else if (saved === 'ru' && onEn) {
+      markRedirected();
+      const stripped = path.replace(/^\/en/, '') || '/';
+      window.location.replace(stripped);
+    }
   }
 </script>
